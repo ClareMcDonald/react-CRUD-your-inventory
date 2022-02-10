@@ -10,9 +10,13 @@ function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
 
   useEffect(() => {
-    async function fetch() {
+    async function fetchUser() {
       const user = await getUser();
+
+      setUser(user);
     }
+
+    fetchUser();
   }, []);
 
   return (
