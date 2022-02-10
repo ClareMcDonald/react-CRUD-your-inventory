@@ -2,6 +2,7 @@ import { getQueriesForElement } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react-router-dom';
+import { getUser } from './services/fetch.utils';
 import './App.css';
 import AuthPage from './AuthPage';
 
