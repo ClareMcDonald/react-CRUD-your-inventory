@@ -11,6 +11,10 @@ import UpdatePage from './UpdatePage';
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
+  const [formName, setFormName] = useState('');
+  const [formCuisine, setFormCuisine] = useState('');
+  const [formCity, setFormCity] = useState('');
+  const [formPriceRating, setFormPriceRating] = useState('');
   
   // useEffect(() => {
   //   function fetchUser() {
@@ -60,14 +64,14 @@ function App() {
             <Route exact path="/create">
               {
                 user
-                  ? <CreatePage />
+                  ? <CreatePage formName={formName} setFormName={setFormName} formCuisine={formCuisine} setFormCuisine={setFormCuisine} formCity={formCity} setFormCity={setFormCity} formPriceRating={formPriceRating} setFormPriceRating={setFormPriceRating} />
                   : <Redirect to="/" />
               }
             </Route>
             <Route exact path="/restaurants/:id">
               {
                 user
-                  ? <UpdatePage />
+                  ? <UpdatePage formName={formName} setFormName={setFormName} formCuisine={formCuisine} setFormCuisine={setFormCuisine} formCity={formCity} setFormCity={setFormCity} formPriceRating={formPriceRating} setFormPriceRating={setFormPriceRating} />
                   : <Redirect to="/" />
               }
             </ Route>

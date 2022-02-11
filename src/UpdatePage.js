@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { getRestaurant, updateRestaurant, deleteRestaurant } from './services/fetch.utils';
 
-export default function UpdatePage() {
+export default function UpdatePage({ formName, setFormName, formCuisine, setFormCuisine, formCity, setFormCity, formPriceRating, setFormPriceRating }) {
   const { id } = useParams;
-  const [formName, setFormName] = useState('');
-  const [formCuisine, setFormCuisine] = useState('');
-  const [formCity, setFormCity] = useState('');
-  const [formPriceRating, setFormPriceRating] = useState('');
+//   const [formName, setFormName] = useState('');
+//   const [formCuisine, setFormCuisine] = useState('');
+//   const [formCity, setFormCity] = useState('');
+//   const [formPriceRating, setFormPriceRating] = useState(1);
     
   useEffect(() => {
     async function fetchRestaurant() {
@@ -31,6 +31,7 @@ export default function UpdatePage() {
   }
     
   async function handleUpdate(e) {
+    e.preventDefault();
     await updateRestaurant(id, {
       name: formName,
       cuisine: formCuisine,
@@ -43,7 +44,7 @@ export default function UpdatePage() {
 
   return (
     <div className='restaurant-detail'>
-      <div>Create a Restaurant
+      <div>Update a Restaurant
         <form onSubmit={handleUpdate}>
           <label>Name
             <input name="name" value={formName} onChange={e => setFormName(e.target.value)}/>
