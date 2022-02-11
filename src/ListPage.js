@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 export default function ListPage() {
+    const [restaurants, setRestaurants] = useState([]);
+
+    useEffect(() => {
+        async function getRestaurants() { 
+            const allRestaurants = await getRestaurants();
+
+            setRestaurants(allRestaurants);
+    }
+    }, []);
+
   return (
-    <div>ListPage</div>
+      <div>Restaurants</div>
+      {}
   );
 }
