@@ -1,23 +1,34 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { getRestaurant } from './services/fetch.utils';
+import { getRestaurant, updateRestaurant, deleteRestaurant } from './services/fetch.utils';
 
 export default function UpdatePage() {
-  const params = useParams;
-  const [singleRestaurant, setSingleRestaurant] = useState({});
+  const { id } = useParams;
+  const [formName, setFormName] = useState('');
+  const [formCuisine, setFormCuisine] = useState('');
+  const [formCity, setFormCity] = useState('');
+  const [formPriceRating, setFormPriceRating] = useState('');
     
   useEffect(() => {
     async function fetchRestaurant() {
-      const restaurant = await getRestaurant(params.id);
+      const restaurant = await getRestaurant(id);
         
-      setSingleRestaurant(restaurant);
+      setFormName(restaurant.name);
+      setFormCuisine(restaurant.cuisine);
+      setFormCity(restaurant.city);
+      setFormPriceRating(restaurant.price_rating);
     }
       
     fetchRestaurant();
       
-  }, [params.id]);
+  }, [id]);
     
+  async function handleDelete() {
+    await deleteRestaurant(id);
+
+    history.push('/restaurants');
+  }
 
   return (
     <div className='restaurant-detail'>
