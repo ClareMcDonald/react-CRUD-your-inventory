@@ -6,8 +6,24 @@ export default function CreatePage() {
   const [formCuisine, setFormCuisine] = useState('');
   const [formCity, setFormCity] = useState('');
   const [formPriceRating, setFormPriceRating] = useState('');
-  
+
   return (
-    <div>Create a Restaurant</div>
+    <div>Create a Restaurant
+      <form>
+        <label>Name
+          <input></input>
+        </label>
+        <label>Cuisine
+          <input></input>
+        </label>
+        <label>City
+          <input></input>
+        </label>
+        <label>Price Rating
+          <input></input>
+        </label>
+        <button>Add Restaurant</button>
+      </form>
+    </div>
   );
 }
