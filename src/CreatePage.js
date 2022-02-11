@@ -1,19 +1,34 @@
 import React from 'react';
 import { useState } from 'react';
+import { createRestaurant } from './services/fetch.utils';
+import { useHistory } from 'react-router-dom';
 
 export default function CreatePage() {
+  const history = useHistory();
   const [formName, setFormName] = useState('');
   const [formCuisine, setFormCuisine] = useState('');
   const [formCity, setFormCity] = useState('');
   const [formPriceRating, setFormPriceRating] = useState('');
 
   async function handleSubmit(e) {
+    e.preventDefault();
+
+    const restaurant = {
+      name: formName,
+      cuisine: formCuisine,
+      city: formCity,
+      price_rating: formPriceRating
+    };
+    
+    await createRestaurant(restaurant);
+
+    history.push('/restaurants');
 
   }
 
   return (
     <div>Create a Restaurant
-      <form>
+      <form onSubmit={handleSubmit}>
         <label>Name
           <input name="name" value={formName} onChange={e => setFormName(e.target.value)}/>
         </label>
