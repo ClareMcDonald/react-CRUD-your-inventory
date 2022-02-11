@@ -43,7 +43,24 @@ export default function UpdatePage() {
 
   return (
     <div className='restaurant-detail'>
-
+      <div>Create a Restaurant
+        <form onSubmit={handleUpdate}>
+          <label>Name
+            <input name="name" value={formName} onChange={e => setFormName(e.target.value)}/>
+          </label>
+          <label>Cuisine
+            <input name="cuisine" value={formCuisine} onChange={e => setFormCuisine(e.target.value)} />
+          </label>
+          <label>City
+            <input name="city" value={formCity} onChange={e => setFormCity(e.target.value)} />
+          </label>
+          <label>Price Rating
+            <input name="price-rating" value={formPriceRating} onChange={e => setFormPriceRating(e.target.value)} />
+          </label>
+          <button>Add Restaurant</button>
+        </form>
+        <button className="delete" type="button" onClick={handleDelete}>Delete Restaurant</button>
+      </div>
     </div>
   );
 }
