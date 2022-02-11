@@ -37,5 +37,14 @@ export async function createRestaurant(restaurant) {
     .insert([restaurant]);
   
   return checkError(response);
-    
+}
+
+export async function getRestaurant(id) {
+  const response = await client
+    .from('restaurants')
+    .select()
+    .match({ id })
+    .single();
+  
+  return checkError(response);
 }
