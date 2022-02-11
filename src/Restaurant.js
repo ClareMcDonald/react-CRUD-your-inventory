@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 
 export default function Restaurant({ restaurant }) {
   return (
-    <Link to={`/restaurants/${restaurant.id}`}>
-      <div className='restaurant'>
+    <div className='restaurant'>
+      <Link to={`/restaurants/${restaurant.id}`}>
         <h4>{restaurant.name}</h4>
-      </div>
-    </Link>
+      </Link>
+      <h5>{restaurant.cuisine}</h5>
+      <h5>{restaurant.city}</h5>
+      <h5>{restaurant.price_rating}</h5>
+    </div>
   );
 }

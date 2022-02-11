@@ -48,3 +48,21 @@ export async function getRestaurant(id) {
   
   return checkError(response);
 }
+
+export async function updateRestaurant(id, updatedRestaurant) {
+  const response = await client
+    .from('restaurants')
+    .update(updatedRestaurant)
+    .match({ id });
+  
+  return checkError(response);
+}
+
+export async function deleteRestaurant(id) {
+  const response = await client
+    .from('restaurants')
+    .delete()
+    .match({ id });
+  
+  return checkError(response);
+}
