@@ -7,24 +7,23 @@ import './App.css';
 import AuthPage from './AuthPage';
 
 function App() {
-  const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
+  const [user, setUser] = useState('');
+  
+  useEffect(() => {
+    function fetchUser() {
+      const newUser = getUser();
 
-  // useEffect(() => {
-  //   async function fetchUser() {
-  //     const user = await getUser();
+      setUser(newUser);
+    }
 
-  //     setUser(user);
-  //   }
-
-  //   fetchUser();
-  // }, []);
-
+    fetchUser();
+  }, []);
+  console.log(user);
   return (
     <Router>
       <div className="App">
         <header className="App-header">
-      
-        </header>
+        </ header>
         <main>
           <Switch>
             <Route exact path="/">
