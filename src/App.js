@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react
 import { getUser, logout } from './services/fetch.utils';
 import './App.css';
 import AuthPage from './AuthPage';
+import ListPage from './ListPage';
 
 function App() {
   const [user, setUser] = useState('');
@@ -46,6 +47,16 @@ function App() {
                   ? <Redirect to='/restaurants' />
                   : <AuthPage setUser={setUser}/>
               }
+            </Route>
+            <Route exact path="/restaturants">
+              {
+                user
+                  ? <ListPage />
+                  : <Redirect to="/" />
+              }
+            </Route>
+            <Route>
+              
             </Route>
           </Switch>
         </main>
