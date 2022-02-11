@@ -7,7 +7,7 @@ import './App.css';
 import AuthPage from './AuthPage';
 import ListPage from './ListPage';
 import CreatePage from './CreatePage';
-import DetailPage from './DetailPage';
+import UpdatePage from './UpdatePage';
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
@@ -67,10 +67,10 @@ function App() {
             <Route exact path="/restaurants/:id">
               {
                 user
-                  ? <DetailPage />
+                  ? <UpdatePage />
                   : <Redirect to="/" />
               }
-            </Route>
+            </ Route>
           </Switch>
         </main>
       </div>

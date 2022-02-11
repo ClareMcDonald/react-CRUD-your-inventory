@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getRestaurant } from './services/fetch.utils';
 
-export default function DetailPage() {
+export default function UpdatePage() {
   const params = useParams;
   const [singleRestaurant, setSingleRestaurant] = useState({});
     
@@ -15,6 +15,7 @@ export default function DetailPage() {
     }
       
     fetchRestaurant();
+      
   }, [params.id]);
     
 
