@@ -29,6 +29,17 @@ export default function UpdatePage() {
 
     history.push('/restaurants');
   }
+    
+  async function handleUpdate(e) {
+    await updateRestaurant(id, {
+      name: formName,
+      cuisine: formCuisine,
+      city: formCity,
+      price_rating: formPriceRating
+    });
+
+    history.push('/restaurants');
+  }
 
   return (
     <div className='restaurant-detail'>
