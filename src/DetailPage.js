@@ -19,6 +19,11 @@ export default function DetailPage() {
     
 
   return (
-    <h3>{singleRestaurant.name}</h3>
+    <div className='restaurant-detail'>
+      <h3>{singleRestaurant.name}</h3>
+      <p>{singleRestaurant.cuisine}</p>
+      <p>{singleRestaurant.city}</p>
+      <p>{singleRestaurant.pric_rating}</p>
+    </div>
   );
 }
