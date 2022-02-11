@@ -6,6 +6,7 @@ import { getUser, logout } from './services/fetch.utils';
 import './App.css';
 import AuthPage from './AuthPage';
 import ListPage from './ListPage';
+import CreatePage from './CreatePage';
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
@@ -52,6 +53,13 @@ function App() {
               {
                 user
                   ? <ListPage />
+                  : <Redirect to="/" />
+              }
+            </Route>
+            <Route exact path="/create">
+              {
+                user
+                  ? <CreatePage />
                   : <Redirect to="/" />
               }
             </Route>
