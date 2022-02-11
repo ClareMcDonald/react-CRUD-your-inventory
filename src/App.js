@@ -9,15 +9,15 @@ import AuthPage from './AuthPage';
 function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
 
-  useEffect(() => {
-    async function fetchUser() {
-      const user = await getUser();
+  // useEffect(() => {
+  //   async function fetchUser() {
+  //     const user = await getUser();
 
-      setUser(user);
-    }
+  //     setUser(user);
+  //   }
 
-    fetchUser();
-  }, []);
+  //   fetchUser();
+  // }, []);
 
   return (
     <Router>
@@ -31,7 +31,7 @@ function App() {
               {
                 user
                   ? <Redirect to='/restaurants' />
-                  : <AuthPage />
+                  : <AuthPage setUser={setUser}/>
               }
             </Route>
           </Switch>
