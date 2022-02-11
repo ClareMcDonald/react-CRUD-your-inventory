@@ -8,17 +8,17 @@ import AuthPage from './AuthPage';
 import ListPage from './ListPage';
 
 function App() {
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
   
-  useEffect(() => {
-    function fetchUser() {
-      const newUser = getUser();
+  // useEffect(() => {
+  //   function fetchUser() {
+  //     const newUser = getUser();
 
-      setUser(newUser);
-    }
+  //     setUser(newUser);
+  //   }
 
-    fetchUser();
-  }, []);
+  //   fetchUser();
+  // }, []);
   
   async function handleLogout() {
     logout();
@@ -44,19 +44,16 @@ function App() {
             <Route exact path="/">
               {
                 user
-                  ? <Redirect to='/restaurants' />
+                  ? <Redirect to="/restaurants" />
                   : <AuthPage setUser={setUser}/>
               }
             </Route>
-            <Route exact path="/restaturants">
+            <Route exact path="/restaurants">
               {
                 user
                   ? <ListPage />
                   : <Redirect to="/" />
               }
-            </Route>
-            <Route>
-              
             </Route>
           </Switch>
         </main>
