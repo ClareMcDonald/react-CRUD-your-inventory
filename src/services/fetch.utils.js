@@ -30,3 +30,12 @@ export async function getRestaurants() {
   
   return checkError(response);
 }
+
+export async function createRestaurant(restaurant) {
+  const response = await client
+    .from('restaurants')
+    .insert([restaurant]);
+  
+  return checkError(response);
+    
+}
