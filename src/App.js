@@ -35,8 +35,8 @@ function App() {
           {
             user &&
             <>
-              <NavLink to="/restaurants">List Page</NavLink>
-              <NavLink to="/create">Create Page</NavLink>
+              <NavLink to="/restaurants" className="navlink">List Page</NavLink>
+              <NavLink to="/create" className="navlink">Create Page</NavLink>
               <button onClick={handleLogout}>Log Out</button>
             </>
           }

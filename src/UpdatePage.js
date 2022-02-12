@@ -5,6 +5,7 @@ import { getRestaurant, updateRestaurant, deleteRestaurant } from './services/fe
 
 export default function UpdatePage() {
   const { id } = useParams();
+  const history = useHistory();
   const [formName, setFormName] = useState('');
   const [formCuisine, setFormCuisine] = useState('');
   const [formCity, setFormCity] = useState('');
@@ -44,7 +45,8 @@ export default function UpdatePage() {
 
   return (
     <div className='restaurant-detail'>
-      <div>Update a Restaurant
+      <div>
+        <h3>Update a Restaurant</h3>
         <form onSubmit={handleUpdate}>
           <label>Name
             <input value={formName} onChange={e => setFormName(e.target.value)}/>
@@ -58,7 +60,7 @@ export default function UpdatePage() {
           <label>Price Rating
             <input value={formPriceRating} onChange={e =>setFormPriceRating(e.target.value)} />
           </label>
-          <button>Add Restaurant</button>
+          <button>Update Restaurant</button>
         </form>
         <button className="delete" type="button" onClick={handleDelete}>Delete Restaurant</button>
       </div>

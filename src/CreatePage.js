@@ -23,11 +23,11 @@ export default function CreatePage() {
     await createRestaurant(restaurant);
 
     history.push('/restaurants');
-
   }
 
   return (
-    <div>Create a Restaurant
+    <div>
+      <h3>Create a Restaurant</h3>
       <form onSubmit={handleSubmit}>
         <label>Name
           <input name="name" value={formName} onChange={e => setFormName(e.target.value)}/>
