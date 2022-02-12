@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState } from 'react';
-import { createRestaurant } from './services/fetch.utils';
+import { createRestaurant } from './services/fetch-utils';
 import { useHistory } from 'react-router-dom';
 
-export default function CreatePage({ formName, setFormName, formCuisine, setFormCuisine, formCity, setFormCity, formPriceRating, setFormPriceRating }) {
+export default function CreatePage() {
   const history = useHistory();
-  // const [formName, setFormName] = useState('');
-  // const [formCuisine, setFormCuisine] = useState('');
-  // const [formCity, setFormCity] = useState('');
-  // const [formPriceRating, setFormPriceRating] = useState('');
+  const [formName, setFormName] = useState('');
+  const [formCuisine, setFormCuisine] = useState('');
+  const [formCity, setFormCity] = useState('');
+  const [formPriceRating, setFormPriceRating] = useState('');
 
   async function handleSubmit(e) {
     e.preventDefault();

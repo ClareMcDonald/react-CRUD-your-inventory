@@ -1,14 +1,14 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import { getRestaurant, updateRestaurant, deleteRestaurant } from './services/fetch.utils';
+import { getRestaurant, updateRestaurant, deleteRestaurant } from './services/fetch-utils';
 
-export default function UpdatePage({ formName, setFormName, formCuisine, setFormCuisine, formCity, setFormCity, formPriceRating, setFormPriceRating }) {
-  const { id } = useParams;
-//   const [formName, setFormName] = useState('');
-//   const [formCuisine, setFormCuisine] = useState('');
-//   const [formCity, setFormCity] = useState('');
-//   const [formPriceRating, setFormPriceRating] = useState(1);
+export default function UpdatePage() {
+  const { id } = useParams();
+  const [formName, setFormName] = useState('');
+  const [formCuisine, setFormCuisine] = useState('');
+  const [formCity, setFormCity] = useState('');
+  const [formPriceRating, setFormPriceRating] = useState(1);
     
   useEffect(() => {
     async function fetchRestaurant() {
@@ -47,16 +47,16 @@ export default function UpdatePage({ formName, setFormName, formCuisine, setForm
       <div>Update a Restaurant
         <form onSubmit={handleUpdate}>
           <label>Name
-            <input name="name" value={formName} onChange={e => setFormName(e.target.value)}/>
+            <input value={formName} onChange={e => setFormName(e.target.value)}/>
           </label>
           <label>Cuisine
-            <input name="cuisine" value={formCuisine} onChange={e => setFormCuisine(e.target.value)} />
+            <input value={formCuisine} onChange={e =>setFormCuisine(e.target.value)} />
           </label>
           <label>City
-            <input name="city" value={formCity} onChange={e => setFormCity(e.target.value)} />
+            <input value={formCity} onChange={e =>setFormCity(e.target.value)} />
           </label>
           <label>Price Rating
-            <input name="price-rating" value={formPriceRating} onChange={e => setFormPriceRating(e.target.value)} />
+            <input value={formPriceRating} onChange={e =>setFormPriceRating(e.target.value)} />
           </label>
           <button>Add Restaurant</button>
         </form>

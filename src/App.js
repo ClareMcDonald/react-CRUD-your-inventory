@@ -2,7 +2,7 @@
 // import userEvent from '@testing-library/user-event';
 import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react-router-dom';
-import { getUser, logout } from './services/fetch.utils';
+import { getUser, logout } from './services/fetch-utils';
 import './App.css';
 import AuthPage from './AuthPage';
 import ListPage from './ListPage';
@@ -11,10 +11,6 @@ import UpdatePage from './UpdatePage';
 
 function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
-  const [formName, setFormName] = useState('');
-  const [formCuisine, setFormCuisine] = useState('');
-  const [formCity, setFormCity] = useState('');
-  const [formPriceRating, setFormPriceRating] = useState('');
   
   // useEffect(() => {
   //   function fetchUser() {
@@ -64,14 +60,14 @@ function App() {
             <Route exact path="/create">
               {
                 user
-                  ? <CreatePage formName={formName} setFormName={setFormName} formCuisine={formCuisine} setFormCuisine={setFormCuisine} formCity={formCity} setFormCity={setFormCity} formPriceRating={formPriceRating} setFormPriceRating={setFormPriceRating} />
+                  ? <CreatePage />
                   : <Redirect to="/" />
               }
             </Route>
             <Route exact path="/restaurants/:id">
               {
                 user
-                  ? <UpdatePage formName={formName} setFormName={setFormName} formCuisine={formCuisine} setFormCuisine={setFormCuisine} formCity={formCity} setFormCity={setFormCity} formPriceRating={formPriceRating} setFormPriceRating={setFormPriceRating} />
+                  ? <UpdatePage />
                   : <Redirect to="/" />
               }
             </ Route>

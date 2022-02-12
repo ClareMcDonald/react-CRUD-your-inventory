@@ -45,7 +45,7 @@ export async function getRestaurant(id) {
     .select()
     .match({ id })
     .single();
-  
+
   return checkError(response);
 }
 
