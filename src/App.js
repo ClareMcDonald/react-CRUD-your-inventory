@@ -1,8 +1,8 @@
 // import { getQueriesForElement } from '@testing-library/react';
 // import userEvent from '@testing-library/user-event';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react-router-dom';
-import { getUser, logout } from './services/fetch-utils';
+import { logout } from './services/fetch-utils';
 import './App.css';
 import AuthPage from './AuthPage';
 import ListPage from './ListPage';
@@ -12,15 +12,7 @@ import UpdatePage from './UpdatePage';
 function App() {
   const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
   
-  // useEffect(() => {
-  //   function fetchUser() {
-  //     const newUser = getUser();
-
-  //     setUser(newUser);
-  //   }
-
-  //   fetchUser();
-  // }, []);
+  // do not need useEffect here
   
   async function handleLogout() {
     logout();
