@@ -1,24 +1,80 @@
-import logo from './logo.svg';
+// import { getQueriesForElement } from '@testing-library/react';
+// import userEvent from '@testing-library/user-event';
+import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch, NavLink, Redirect } from 'react-router-dom';
+import { getUser, logout } from './services/fetch-utils';
 import './App.css';
+import AuthPage from './AuthPage';
+import ListPage from './ListPage';
+import CreatePage from './CreatePage';
+import UpdatePage from './UpdatePage';
 
 function App() {
+  const [user, setUser] = useState(localStorage.getItem('supabase.auth.token'));
+  
+  // useEffect(() => {
+  //   function fetchUser() {
+  //     const newUser = getUser();
+
+  //     setUser(newUser);
+  //   }
+
+  //   fetchUser();
+  // }, []);
+  
+  async function handleLogout() {
+    logout();
+
+    setUser('');
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          {
+            user &&
+            <>
+              <NavLink to="/restaurants" className="navlink">List Page</NavLink>
+              <NavLink to="/create" className="navlink">Create Page</NavLink>
+              <button onClick={handleLogout}>Log Out</button>
+            </>
+          }
+        </header>
+        <main>
+          <Switch>
+            <Route exact path="/">
+              {
+                user
+                  ? <Redirect to="/restaurants" />
+                  : <AuthPage setUser={setUser}/>
+              }
+            </Route>
+            <Route exact path="/restaurants">
+              {
+                user
+                  ? <ListPage />
+                  : <Redirect to="/" />
+              }
+            </Route>
+            <Route exact path="/create">
+              {
+                user
+                  ? <CreatePage />
+                  : <Redirect to="/" />
+              }
+            </Route>
+            <Route exact path="/restaurants/:id">
+              {
+                user
+                  ? <UpdatePage />
+                  : <Redirect to="/" />
+              }
+            </ Route>
+          </Switch>
+        </main>
+      </div>
+    </Router>
   );
 }
 
